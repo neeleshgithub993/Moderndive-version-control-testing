@@ -3,15 +3,15 @@ library(ggplot2)
 library(moderndive)
 
 #grammer of graphics
-# matching data variable to aesthetic (aes for eg x,y position, size colour ) 
-# of geometric objects (geoms for example point, line histogram etc)
+# matching data variable to aesthetic (aes for eg x,y position, size, colour ) 
+# of geometric objects (geoms for example point, line, histogram etc)
 
 #faceting breaks plot into several plots
 #position - adjustment for barplots
 
 # 5 named grahics.  scatterplots, linegraphs, histogram, boxplot, barplots
 
-# 1. scatterplots
+# 5NG1. scatterplots
 
 View(flights)
 View(alaska_flights)
@@ -36,7 +36,7 @@ ggplot(data = alaska_flights) +
 ggplot(data = alaska_flights) +
   geom_jitter(aes(x = dep_delay, y = arr_delay), width = 30, height =30, alpha = 0.4)
 
-# Linegraphs via geomline. Used when variable on x axis has an inherent ordering such as time.
+# 5NG2 Linegraphs via geomline. Used when variable on x axis has an inherent ordering such as time.
 
 weather
 
@@ -56,7 +56,7 @@ ggplot(data = early_january_weather)+
   geom_line(aes(x = time_hour, y = temp), linetype = 1, size = 1, colour = "blue")
 
 
-# 3. Histograms. via geom_histogram
+# 5NG3. Histograms. via geom_histogram
 # bins, observations falling into bins
 
 ggplot(weather)+
@@ -68,12 +68,13 @@ ggplot(weather)+
 ggplot(weather)+
   geom_histogram(aes(x = temp), colour = "white", fill = "steelblue")
 
-# specify how many bins we want to cut x axis in by "bins = .........."
+# specify how many bins we want to cut x axis in by "bins = .........." 
+#default bins are 30
 
 ggplot(weather)+
   geom_histogram(aes(x = temp), bins = 40, colour = "white", fill = "steelblue")
 
-# specify width of the bins by "binwidth = ........."
+# Or specify width of the bins by "binwidth = ........."
 
 ggplot(weather)+
   geom_histogram(aes(x = temp), binwidth = 10, colour = "white", fill = "steelblue")
