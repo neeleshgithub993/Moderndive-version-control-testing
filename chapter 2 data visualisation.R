@@ -78,3 +78,56 @@ ggplot(weather)+
 
 ggplot(weather)+
   geom_histogram(aes(x = temp), binwidth = 10, colour = "white", fill = "steelblue")
+
+#facet wrapping
+#splitting the histogram on the basis of month by adding facet_wrap(~month)
+
+ggplot(weather)+
+  geom_histogram(aes(x = temp), binwidth = 10, colour = "white", fill = "steelblue")+
+  facet_wrap(~month)
+
+# specify number of row in facet wrap by facet_wrap(~month, nrow = .....)
+#or number of coloumns by ncol=......
+
+ggplot(weather)+
+  geom_histogram(aes(x = temp), binwidth = 10, colour = "white", fill = "steelblue")+
+  facet_wrap(~month, nrow = 4)
+
+ggplot(weather)+
+  geom_histogram(aes(x = temp), binwidth = 10, colour = "white", fill = "steelblue")+
+  facet_wrap(~month, ncol = 4)
+
+# 5NG4 Boxplots. via geom_boxplot
+
+ggplot(weather)+
+  geom_boxplot(aes(x = factor(month), y = temp)). 
+#numerical variable month converted to categorical variable by using factor()  
+
+#5NG5 barplots  via geom_bar or geom_col
+# geom_bar() when not pre counted and geom_col() when pre counted
+
+ggplot(flights)+
+  geom_bar(aes(x = carrier))
+
+# Two categorical variables
+
+View(flights)
+
+ggplot(flights)+
+  geom_bar(aes(x = carrier, fill = origin)). # this is called stacked barplots
+
+#dodged barplots
+
+ggplot(flights)+
+  geom_bar(aes(x = carrier, fill = origin), position = "dodge")
+
+# making width of every bar equal
+ggplot(flights)+
+  geom_bar(aes(x = carrier, fill = origin), 
+           position = position_dodge(preserve = "single"))
+
+#faceting geom bar
+
+ggplot(flights)+
+  geom_bar(aes(x = carrier))+
+  facet_wrap(~origin, ncol = 1)
