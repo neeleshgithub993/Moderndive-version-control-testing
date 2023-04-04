@@ -2,24 +2,32 @@ library( dplyr, ggplot2, nycflights13)
 
 # functions of dplyr 
 
-#filter()
+#1. filter()
 
-#summarise()
+#2. summarise()
 
-#group_by()
+#3. group_by()
 
-#mutate()
+#4. mutate()
 
-#arrange()
+#5. arrange()
 
-#join()
+#6. join()
 
-#filter()
+###################    1. filter()
 
 View(flights)
 
 portland_flights <- flights %>%
-  filter( dest == "PDX")
- 
+  filter( dest == "PDX"). #other operators can also be used like >, <, >=, <= , != not equal to etc. 
+                          # criteria can be combined using "|" or operator or "&" and operator  
 portland_flights
 View(portland_flights)
+
+btv_sea_flights_fall <- flights %>%
+filter (origin == "JFK" & (dest == "BTV" | dest == "SEA") & month >= 10) #combining different operators
+
+View(btv_sea_flights_fall)
+
+
+
